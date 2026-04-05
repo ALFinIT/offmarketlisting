@@ -19,7 +19,12 @@ export const metadata: Metadata = {
     "luxury property",
   ],
   icons: {
-    icon: '/favicon.svg',
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.svg', type: 'image/png' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
   openGraph: {
     title,

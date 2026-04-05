@@ -145,7 +145,7 @@ export default function Home() {
   const [magnetError, setMagnetError] = useState("");
   const [formError, setFormError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [customBudget, setCustomBudget] = useState("");
+  const [hideWhatsApp, setHideWhatsApp] = useState(false);
   const footerRef = useRef<HTMLElement | null>(null);
   const [form, setForm] = useState({
     name: "",
@@ -195,6 +195,29 @@ export default function Home() {
     );
     footerObserver.observe(footerRef.current);
     return () => footerObserver.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const handleRejection = (event: PromiseRejectionEvent) => {
+      const message = event.reason?.message || event.reason || "";
+      if (typeof message === "string" && message.includes("Cannot redefine property: ethereum")) {
+        event.preventDefault();
+      }
+    };
+
+    const handleError = (event: ErrorEvent) => {
+      if (event.message.includes("Cannot redefine property: ethereum")) {
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener("unhandledrejection", handleRejection);
+    window.addEventListener("error", handleError);
+
+    return () => {
+      window.removeEventListener("unhandledrejection", handleRejection);
+      window.removeEventListener("error", handleError);
+    };
   }, []);
 
   const handleMagnet = () => {
