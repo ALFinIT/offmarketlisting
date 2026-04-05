@@ -16,8 +16,8 @@
   --text: #2a2a2a;
   --muted: #6b7280;
   --border: #e2d9cc;
-  --body-font: var(--font-jost, "Jost", "Helvetica Neue", Arial, sans-serif);
-  --display-font: var(--font-cormorant, "Cormorant Garamond", "Times New Roman", serif);
+  --body-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --display-font: Georgia, "Times New Roman", serif;
 }
 
 html {
@@ -32,7 +32,52 @@ body {
   background: var(--cream);
   overflow-x: hidden;
   cursor: default;
-  line-height: 1.4;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--display-font);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 19px;
+}
+
+h3 {
+  font-size: 19px;
+  font-style: italic;
+}
+
+p {
+  font-family: var(--body-font);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  font-family: var(--body-font);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.caption {
+  font-family: var(--body-font);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--muted);
 }
 
 a {
@@ -69,9 +114,21 @@ nav.scrolled {
 
 .nav-logo {
   display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.nav-logo-svg {
+  width: 32px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.nav-logo > div {
+  display: flex;
   flex-direction: column;
   gap: 1px;
-  text-decoration: none;
 }
 
 .nav-logo-top {
@@ -90,26 +147,6 @@ nav.scrolled {
   color: var(--gold);
   letter-spacing: 0.35em;
   text-transform: uppercase;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  text-decoration: none;
-  transition: color 0.3s;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: var(--gold-light);
 }
 
 .nav-cta {
@@ -193,7 +230,7 @@ nav.scrolled {
   align-items: center;
   gap: 0.75rem;
   font-size: 0.62rem;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold-light);
   font-weight: 500;
@@ -369,8 +406,8 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.35em;
+  font-size: 0.625rem;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 500;
@@ -460,7 +497,7 @@ section {
   font-family: var(--display-font);
   font-size: 3.5rem;
   font-weight: 300;
-  color: rgba(184, 149, 42, 0.15);
+  color: rgba(184, 149, 42, 0.4);
   line-height: 1;
   margin-bottom: 1.5rem;
 }

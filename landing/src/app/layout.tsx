@@ -1,18 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
-
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const jost = Jost({
-  variable: "--font-jost",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 
 const title =
   "Off-Market Listing Turkey | Exclusive Istanbul & Bodrum Properties";
@@ -31,17 +18,22 @@ export const metadata: Metadata = {
     "citizenship by investment",
     "luxury property",
   ],
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title,
     description,
     type: "website",
     url: "https://offmarketturkey.com/",
     locale: "en_US",
+    images: [{ url: '/favicon.svg' }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: ['/favicon.svg'],
   },
 };
 
@@ -51,8 +43,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jost.variable} ${cormorant.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <body suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

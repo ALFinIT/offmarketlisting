@@ -10,10 +10,10 @@ type City = { name: string; areas: string; image: string; slug: string };
 type DataPanel = { number: string; label: string; note: string };
 
 const stats: Stat[] = [
-  { number: "€400K", label: "Minimum listing budget" },
+  { number: "31-39%", label: "Nominal price growth YoY (2024)" },
   { number: "4-6%", label: "Gross rental yield, prime Istanbul" },
-  { number: "50M+", label: "Annual tourism visitors to Turkey" },
-  { number: "100%", label: "Off-market, unlisted inventory" },
+  { number: "8.7%", label: "Rise in foreign buyer transactions, 2024-2025" },
+  { number: "$400K", label: "Minimum property value for citizenship eligibility" },
 ];
 
 const valueProps: ValueProp[] = [
@@ -45,7 +45,7 @@ const steps: Step[] = [
     num: "01",
     title: "Submit Your Criteria",
     body:
-      "Share your target city, budget, property type, and whether Turkish citizenship by investment is a consideration. We treat all enquiries as strictly confidential.",
+      "Share your target city, budget range, property type, and whether Turkish citizenship by investment is a consideration. We treat all enquiries as strictly confidential.",
     tag: "2 minute form",
   },
   {
@@ -94,7 +94,7 @@ const cities: City[] = [
 const marketPanels: DataPanel[] = [
   { number: "1.4M", label: "Residential transactions\nH1 2025 (Turkey nationwide)", note: "+15.6% YoY in nominal terms" },
   { number: "+8.7%", label: "Rise in foreign buyer\ntransactions, 2024-2025", note: "Russia, Iran, Germany lead" },
-  { number: "€400K", label: "Minimum property value\nfor citizenship eligibility", note: "Turkish CBI programme, current threshold" },
+  { number: "$400K", label: "Minimum property value\nfor citizenship eligibility", note: "Turkish CBI programme, current threshold" },
   { number: "4-6%", label: "Gross rental yield,\nprime Istanbul (long-let)", note: "Short-let yields higher, with regulatory risk" },
 ];
 
@@ -145,12 +145,13 @@ export default function Home() {
   const [magnetError, setMagnetError] = useState("");
   const [formError, setFormError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [hideWhatsApp, setHideWhatsApp] = useState(false);
+  const [customBudget, setCustomBudget] = useState("");
   const footerRef = useRef<HTMLElement | null>(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
     budget: "",
+    customBudget: "",
     city: "",
     cbi: "",
     consent: false,
@@ -212,7 +213,7 @@ export default function Home() {
     event.preventDefault();
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!form.name || !form.email || !form.budget || !form.city) {
+    if (!form.name || !form.email || !form.budget || !form.city || (form.budget === "Other" && !form.customBudget)) {
       setFormError("Please complete all required fields before submitting.");
       return;
     }
@@ -240,23 +241,16 @@ export default function Home() {
     <>
       <nav id="nav" className={scrolled ? "scrolled" : ""}>
         <a href="#home" className="nav-logo">
-          <span className="nav-logo-top">Off-Market Listing</span>
-          <span className="nav-logo-sub">Turkey | Private Real Estate</span>
+          <svg width="32" height="40" viewBox="0 0 44 56" fill="none" className="nav-logo-svg">
+            <path d="M4 56L4 28C4 12 13 4 22 4C31 4 40 12 40 28L40 56Z" stroke="#D4AF4A" strokeWidth="2" strokeLinejoin="round"/>
+            <line x1="4" y1="28" x2="40" y2="28" stroke="#D4AF4A" strokeWidth="1" opacity=".5"/>
+            <path d="M22 13L27 20L22 27L17 20Z" fill="#D4AF4A"/>
+          </svg>
+          <div>
+            <span className="nav-logo-top">Off-Market Listing</span>
+            <span className="nav-logo-sub">Turkey</span>
+          </div>
         </a>
-        <ul className="nav-links">
-          <li>
-            <a href="#cities">Markets</a>
-          </li>
-          <li>
-            <a href="#how">Process</a>
-          </li>
-          <li>
-            <a href="#data">Insights</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
         <button className="nav-cta" onClick={navCta}>
           Request Listings
         </button>
@@ -273,15 +267,14 @@ export default function Home() {
               Real Estate Market
             </h1>
             <p className="hero-sub">
-              Exclusive, unlisted properties curated for serious buyers. Concierge service, verified due diligence, and
-              direct access to sellers - without the noise of public listings.
+              Private, off-market real estate in Istanbul, Bodrum & Antalya. Concierge service, verified listings, full due diligence. For serious buyers only.
             </p>
             <div className="hero-actions">
               <a href="#contact" className="btn-primary">
                 Request Private Listings
               </a>
               <a href="#magnet" className="btn-outline">
-                Download Due Diligence Guide
+                Download Due Diligence Checklist
               </a>
             </div>
           </div>
@@ -401,13 +394,10 @@ export default function Home() {
               genuine <em>scale.</em>
             </h2>
             <p className="data-body">
-              Turkey&apos;s residential market is one of the largest in Europe by transaction volume. Foreign buyer activity has
-              grown consistently, driven by citizenship-by-investment demand and the Lira&apos;s long-term depreciation creating
-              attractive hard-currency entry points for international buyers.
+              Turkey&apos;s residential market posted strong nominal growth in 2024–2025, but real (inflation-adjusted) returns tell a different story. Nominal price growth: ~31–39% YoY (2024). With CPI running at 50–60%, real returns have been negative in most segments.
             </p>
             <p className="data-body" style={{ marginBottom: 0 }}>
-              We present factual, sourced data. We do not make yield promises or speculative price forecasts in our
-              marketing materials - a policy we believe distinguishes us from most platforms in this market.
+              Foreign sales: 8.7% rise YoY, driven by Russian, Iranian, and Gulf buyers. Citizenship-by-investment threshold remains $400K equivalent. Coastal and luxury segment: oversupply in Bodrum and parts of Istanbul is suppressing luxury price growth heading into 2025–2026.
             </p>
             <div className="data-source" style={{ marginTop: "1.5rem" }}>
               Sources: TÜİK (Turkish Statistical Institute), GYODER (Property Development Association), Central Bank of
@@ -433,7 +423,7 @@ export default function Home() {
               </svg>
               Free Download
             </div>
-            <div className="magnet-title">Turkey Property Due Diligence Checklist</div>
+            <div className="magnet-title">Turkey Real Estate Due Diligence Checklist</div>
             <div className="magnet-subtitle">
               12-point verification guide for foreign buyers - tapu, DASK, zoning, permits, and more. PDF delivered
               instantly.
@@ -523,12 +513,22 @@ export default function Home() {
                       onChange={(e) => setForm({ ...form, budget: e.target.value })}
                     >
                       <option value="">Select budget</option>
-                      <option>€250,000 - €400,000</option>
-                      <option>€400,000 - €750,000</option>
-                      <option>€750,000 - €1,500,000</option>
-                      <option>€1,500,000+</option>
+                      <option>$250,000 - $400,000</option>
+                      <option>$400,000 - $750,000</option>
+                      <option>$750,000 - $1,500,000</option>
+                      <option>$1,500,000+</option>
+                      <option>Other</option>
                     </select>
                   </div>
+                  {form.budget === "Other" && (
+                    <input
+                      type="text"
+                      placeholder="Enter your budget range"
+                      value={form.customBudget}
+                      onChange={(e) => setForm({ ...form, customBudget: e.target.value })}
+                      style={{ marginTop: "0.5rem" }}
+                    />
+                  )}
                 </div>
                 <div className="form-group">
                   <label htmlFor="city">City of interest *</label>
