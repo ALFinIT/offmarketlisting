@@ -677,9 +677,10 @@ section {
 
 .city-card {
   position: relative;
-  height: 320px;
+  height: 340px;
   overflow: hidden;
   cursor: pointer;
+  display: block;
 }
 
 .city-card-bg {
@@ -725,15 +726,29 @@ section {
   color: var(--gold);
   font-weight: 500;
 }
+.city-card-footer {
+  margin-top: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.city-card-note {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
 
 .city-hover {
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-end;
   opacity: 0;
   transition: opacity 0.4s;
+  padding: 1rem;
 }
 
 .city-card:hover .city-hover {
@@ -741,12 +756,17 @@ section {
 }
 
 .city-hover-btn {
-  font-size: 0.6rem;
-  color: var(--gold);
+  font-family: var(--display-font);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy-deep);
   border: 1px solid var(--gold);
-  padding: 0.6rem 1.5rem;
+  padding: 0.6rem 1.35rem;
   font-weight: 500;
-  background: transparent;
+  background: var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.18);
 }
 
 /* MARKET DATA */
@@ -1500,3 +1520,5 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+

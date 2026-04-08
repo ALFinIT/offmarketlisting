@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { useMarkets } from "./providers/MarketsProvider";
 
 type Stat = { number: string; label: string };
 type ValueProp = { num: string; title: string; body: string; icon: "eye" | "shield" | "user" };
 type Step = { num: string; title: string; body: string; tag: string };
-type City = { name: string; areas: string; image: string; slug: string };
 type DataPanel = { number: string; label: string; note: string };
 
 const stats: Stat[] = [
@@ -64,32 +64,7 @@ const steps: Step[] = [
   },
 ];
 
-const cities: City[] = [
-  {
-    name: "Istanbul",
-    areas: "Bosphorus | Nişantaşı | Bebek",
-    image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=75",
-    slug: "istanbul",
-  },
-  {
-    name: "Bodrum",
-    areas: "Yalikavak | Turkbuku | Golturkbuku",
-    image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=75",
-    slug: "bodrum",
-  },
-  {
-    name: "Antalya",
-    areas: "Kaleiçi | Konyaalti | Lara",
-    image: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&q=75",
-    slug: "antalya",
-  },
-  {
-    name: "Alaçatı",
-    areas: "Aegean | Çeşme Peninsula",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=75",
-    slug: "alacati",
-  },
-];
+// Markets supplied via MarketsProvider.
 
 const marketPanels: DataPanel[] = [
   { number: "1.4M", label: "Residential transactions\nH1 2025 (Turkey nationwide)", note: "+15.6% YoY in nominal terms" },
@@ -139,6 +114,7 @@ function Icon({ name }: { name: ValueProp["icon"] }) {
 }
 
 export default function Home() {
+  const { markets } = useMarkets();
   const [scrolled, setScrolled] = useState(false);
   const [magnetEmail, setMagnetEmail] = useState("");
   const [magnetSent, setMagnetSent] = useState(false);
@@ -199,7 +175,7 @@ export default function Home() {
 
   useEffect(() => {
     const handleRejection = (event: PromiseRejectionEvent) => {
-      const message = event.reason?.message || event.reason || "";
+      const message = event.reason.message || event.reason || "";
       if (typeof message === "string" && message.includes("Cannot redefine property: ethereum")) {
         event.preventDefault();
       }
@@ -380,31 +356,34 @@ export default function Home() {
               </h2>
             </div>
             <p className="markets-note">
-              We maintain active seller relationships in Istanbul&apos;s most sought-after neighbourhoods, Bodrum&apos;s coastal
-              villages, Antalya&apos;s marina district, and the emerging Alaçatı wine country. Listings are never shared
+              We maintain active seller relationships in Istanbul's most sought-after neighbourhoods, Bodrum's coastal
+              villages, Antalya's marina district, and the emerging Alaçatı wine country. Listings are never shared
               publicly.
             </p>
           </div>
           <div className="city-grid">
-            {cities.map((city, idx) => (
+            {markets.map((market, idx) => (
               <Link
-                href={`/markets/${city.slug}`}
-                key={city.name}
+                href={`/markets/${market.slug}`}
+                key={market.slug}
                 className={`city-card reveal ${idx === 1 ? "reveal-delay-1" : idx === 2 ? "reveal-delay-2" : idx === 3 ? "reveal-delay-3" : ""}`}
               >
-                <div className="city-card-bg" style={{ backgroundImage: `url('${city.image}')` }} />
+                <div className="city-card-bg" style={{ backgroundImage: `url('${market.banner}')` }} />
                 <div className="city-overlay" />
                 <div className="city-card-content">
-                  <div className="city-name">{city.name}</div>
-                  <div className="city-country">{city.areas}</div>
-                </div>
-                <div className="city-hover">
-                  <span className="city-hover-btn">View Market</span>
+                  <div className="city-name">{market.name}</div>
+                  <div className="city-country">{market.areas}</div>
+                  <div className="city-card-footer">
+                    <span className="city-card-note">Private listings only</span>
+                    <span className="city-hover-btn">View Market</span>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
         </section>
+
+
 
         <section className="market-data" id="data">
           <div className="data-text reveal">
@@ -623,28 +602,7 @@ export default function Home() {
             <p className="footer-tagline">
               Your Private Gateway to Turkey&apos;s Hidden Real Estate Gems.
             </p>
-            <div className="footer-contact">
-              <a href="#" className="footer-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  <path d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                </svg>
-                Nişantaşı, Istanbul, Turkey
-              </a>
-              <a href="mailto:hello@offmarketturkey.com" className="footer-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-                hello@offmarketturkey.com
-              </a>
-              <a href="#" className="footer-contact-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                  <path d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 6Z" />
-                </svg>
-                +90 212 000 0000
-              </a>
             </div>
-          </div>
           <div>
             <div className="footer-col-title">Markets</div>
             <div className="footer-links">
@@ -682,17 +640,6 @@ export default function Home() {
             investment advice. All market data is sourced from publicly available reports and should not be relied upon
             as a guarantee of future performance. Regulated under applicable Turkish real estate law.
           </p>
-          <div className="footer-social">
-            <a href="#" className="social-btn" title="LinkedIn">
-              in
-            </a>
-            <a href="#" className="social-btn" title="Instagram">
-              ig
-            </a>
-            <a href="#" className="social-btn" title="WhatsApp">
-              wa
-            </a>
-          </div>
           <a
             className="footer-made-by"
             href="https://alfinit.vercel.app/"

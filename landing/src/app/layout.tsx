@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import MarketsProvider from "./providers/MarketsProvider";
 
 const title =
   "Off-Market Listing Turkey | Exclusive Istanbul & Bodrum Properties";
@@ -49,7 +50,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <MarketsProvider>{children}</MarketsProvider>
+      </body>
     </html>
   );
 }
