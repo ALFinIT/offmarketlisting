@@ -298,6 +298,7 @@ nav.scrolled {
   cursor: pointer;
   transition: all 0.3s;
   font-family: var(--body-font);
+  border-radius: 4px;
 }
 
 .btn-primary {
@@ -318,6 +319,7 @@ nav.scrolled {
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.4);
   font-weight: 500;
+  border-radius: 4px;
 }
 
 .btn-outline:hover {
@@ -1045,6 +1047,7 @@ select:focus {
   color: var(--white);
   border: none;
   letter-spacing: 0.18em;
+  border-radius: 4px;
 }
 
 .btn-submit:hover {
@@ -1171,6 +1174,7 @@ select:focus {
   color: var(--navy-deep);
   border: none;
   white-space: nowrap;
+  border-radius: 4px;
 }
 
 .btn-magnet:hover {
