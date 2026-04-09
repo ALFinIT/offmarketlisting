@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "markets": "Märkte",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "cta": "Listen anfordern"
+  },
+  "hero": {
+    "title": "Off-Market Listing Turkey",
+    "subtitle": "Private, off-market Immobilien in Istanbul, Bodrum & Antalya",
+    "description": "Concierge-Service, verifizierte Listings, vollständige Due Diligence. Nur für ernsthafte Käufer.",
+    "cta": "Marktbericht erhalten",
+    "learnMore": "Mehr erfahren"
+  },
+  "stats": {
+    "growth": "Nominaler Preiswachstum Jährlich (2024)",
+    "yield": "Bruttomietrendite, Istanbul Premium",
+    "transactions": "Anstieg bei Transaktionen ausländischer Käufer, 2024-2025",
+    "citizenship": "Mindestimmobilienwert für Staatsbürgerschaftsberechtigung"
+  },
+  "valueProps": {
+    "curated": {
+      "title": "Kuratierte Exklusivität",
+      "body": "Jedes Listing wird persönlich geprüft. Wir führen ein kleines, selektives Portfolio von Immobilien, die in keinem öffentlichen Kanal verfügbar sind - Bosporus-Yalis, Bodrum-Seevillen und ägäische Küstengüter."
+    },
+    "verified": {
+      "title": "Verifizierte Due Diligence",
+      "body": "Grundbuchstatus (Tapu), DASK-Versicherung, Bauzonenkonformität, Wohnberechtigungen und Hypothekenbelastungen werden vor der Präsentation einer Immobilie überprüft. Keine Überraschungen nach der Verpflichtung."
+    },
+    "concierge": {
+      "title": "Concierge-Service",
+      "body": "Private Flughafentransfers, chauffierte Immobilienbesichtigungen, Vorstellungen bei Staatsbürgerschaftsanwälten und Nachkaufunterstützung. Wir bleiben Ihr Ansprechpartner von der ersten Anfrage bis zum Abschluss."
+    }
+  },
+  "steps": {
+    "submit": {
+      "title": "Senden Sie Ihre Kriterien",
+      "body": "Teilen Sie Ihre Zielstadt, Budgetbereich, Immobilientyp und ob Sie die türkische Staatsbürgerschaft durch Investition in Betracht ziehen. Wir behandeln alle Anfragen als streng vertraulich.",
+      "tag": "2-Minuten-Formular"
+    },
+    "match": {
+      "title": "Wir finden Listings",
+      "body": "Innerhalb von 48 Stunden präsentiert ein Berater eine kuratierte Shortlist aus unserem Off-Market-Portfolio. Immobilien werden vollständig beschrieben; Adressen werden bis zur NDA-Unterzeichnung zurückgehalten.",
+      "tag": "Innerhalb 48 Stunden"
+    },
+    "guided": {
+      "title": "Geführte Transaktion",
+      "body": "Wir koordinieren die Besichtigung, Due Diligence, rechtliche Überprüfung und Verhandlung. Unsere Gebühr wird vom Verkäufer bezahlt. Sie zahlen nichts für den Beratungsservice.",
+      "tag": "Vollständiger Concierge"
+    }
+  },
+  "marketData": {
+    "transactions": "Wohnungstransaktionen H1 2025 (Türkei landesweit)",
+    "rise": "Anstieg bei Transaktionen ausländischer Käufer, 2024-2025",
+    "citizenship": "Mindestimmobilienwert für Staatsbürgerschaftsberechtigung",
+    "rental": "Bruttomietrendite, Istanbul Premium (Langzeitvermietung)"
+  },
+  "assurances": {
+    "noPublic": "Keine öffentlichen Listings.",
+    "feeFree": "Kostenlose Beratung.",
+    "response": "Antwort innerhalb 24 Stunden."
+  },
+  "form": {
+    "title": "Erhalten Sie Ihren kostenlosen Off-Market-Bericht",
+    "description": "Erhalten Sie kuratierte Listings, die Ihren Kriterien entsprechen, plus Marktinsights und Staatsbürgerschaftsleitfaden.",
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "budget": "Budgetbereich",
+    "budgetOptions": {
+      "under1m": "Unter 1 Mio. $",
+      "1mTo5m": "1-5 Mio. $",
+      "5mTo10m": "5-10 Mio. $",
+      "over10m": "Über 10 Mio. $"
+    },
+    "city": "Zielstadt",
+    "cityOptions": {
+      "istanbul": "Istanbul",
+      "bodrum": "Bodrum",
+      "antalya": "Antalya",
+      "alacati": "Alaçatı",
+      "any": "Jede Stadt"
+    },
+    "citizenship": "Türkische Staatsbürgerschaftsinteresse",
+    "citizenshipOptions": {
+      "yes": "Ja, interessiert",
+      "no": "Nein, nicht interessiert",
+      "considering": "In Betracht ziehend"
+    },
+    "consent": "Ich stimme zu, Marktupdates und Immobilienempfehlungen zu erhalten",
+    "submit": "Meinen Bericht erhalten",
+    "success": "Vielen Dank! Ihr Bericht wird innerhalb von 24 Stunden gesendet.",
+    "error": "Bitte füllen Sie alle erforderlichen Felder aus."
+  },
+  "footer": {
+    "brand": {
+      "name": "Off-Market Listing Turkey",
+      "sub": "Private Immobilien",
+      "tagline": "Ihr privater Zugang zu den verborgenen Immobilien-Schätzen der Türkei."
+    },
+    "markets": "Märkte",
+    "services": "Dienstleistungen",
+    "company": "Unternehmen",
+    "privateListings": "Private Listings",
+    "citizenshipGuide": "Staatsbürgerschaftsleitfaden",
+    "conciergeService": "Concierge-Service",
+    "dueDiligence": "Due Diligence",
+    "partnerReferrals": "Partner-Empfehlungen",
+    "aboutUs": "Über uns",
+    "marketInsights": "Marktinsights",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "kvkkNotice": "KVKK-Hinweis",
+    "contact": "Kontakt",
+    "legal": "© 2026 Off-Market Listing Turkey. Alle Rechte vorbehalten. Diese Website stellt keine finanzielle oder Anlageberatung dar. Alle Marktdaten stammen aus öffentlich zugänglichen Berichten und sollten nicht als Garantie für zukünftige Leistung angesehen werden. Regulierung gemäß geltendem türkischem Immobilienrecht.",
+    "madeBy": "Erstellt von ALFINIT"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "russian": "Русский",
+    "german": "Deutsch",
+    "persian": "فارسی"
+  }
+}

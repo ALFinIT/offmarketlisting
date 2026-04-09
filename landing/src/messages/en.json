@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Home",
+    "markets": "Markets",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Request Listings"
+  },
+  "hero": {
+    "title": "Off-Market Listing Turkey",
+    "subtitle": "Private, off-market real estate in Istanbul, Bodrum & Antalya",
+    "description": "Concierge service, verified listings, full due diligence. For serious buyers only.",
+    "cta": "Get Market Report",
+    "learnMore": "Learn More"
+  },
+  "stats": {
+    "growth": "Nominal price growth YoY (2024)",
+    "yield": "Gross rental yield, prime Istanbul",
+    "transactions": "Rise in foreign buyer transactions, 2024-2025",
+    "citizenship": "Minimum property value for citizenship eligibility"
+  },
+  "valueProps": {
+    "curated": {
+      "title": "Curated Exclusivity",
+      "body": "Every listing is personally vetted. We carry a small, selective portfolio of properties not available through any public channel - Bosphorus yalilar, Bodrum seafront villas, and Aegean coastal estates."
+    },
+    "verified": {
+      "title": "Verified Due Diligence",
+      "body": "Title deed (tapu) status, DASK insurance, zoning compliance, habitation permits, and mortgage encumbrances are reviewed before any property is presented to you. No surprises after commitment."
+    },
+    "concierge": {
+      "title": "Concierge Service",
+      "body": "Private airport transfers, chauffeur-guided property tours, introductions to citizenship lawyers, and post-purchase support. We remain your point of contact from first enquiry through to completion."
+    }
+  },
+  "steps": {
+    "submit": {
+      "title": "Submit Your Criteria",
+      "body": "Share your target city, budget range, property type, and whether Turkish citizenship by investment is a consideration. We treat all enquiries as strictly confidential.",
+      "tag": "2 minute form"
+    },
+    "match": {
+      "title": "We Match Listings",
+      "body": "Within 48 hours, a consultant presents a curated shortlist from our off-market portfolio. Properties are described fully; addresses are withheld until NDA is signed.",
+      "tag": "Within 48 hours"
+    },
+    "guided": {
+      "title": "Guided Transaction",
+      "body": "We coordinate the viewing, due diligence, legal review, and negotiation. Our fee is paid by the seller. You pay nothing for the advisory service.",
+      "tag": "Full concierge"
+    }
+  },
+  "marketData": {
+    "transactions": "Residential transactions H1 2025 (Turkey nationwide)",
+    "rise": "Rise in foreign buyer transactions, 2024-2025",
+    "citizenship": "Minimum property value for citizenship eligibility",
+    "rental": "Gross rental yield, prime Istanbul (long-let)"
+  },
+  "assurances": {
+    "noPublic": "No public listings.",
+    "feeFree": "Fee-free advisory.",
+    "response": "Response within 24 hours."
+  },
+  "form": {
+    "title": "Get Your Free Off-Market Report",
+    "description": "Receive curated listings matching your criteria, plus market insights and citizenship guidance.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "budget": "Budget Range",
+    "budgetOptions": {
+      "under1m": "Under $1M",
+      "1mTo5m": "$1M - $5M",
+      "5mTo10m": "$5M - $10M",
+      "over10m": "Over $10M"
+    },
+    "city": "Target City",
+    "cityOptions": {
+      "istanbul": "Istanbul",
+      "bodrum": "Bodrum",
+      "antalya": "Antalya",
+      "alacati": "Alaçatı",
+      "any": "Any City"
+    },
+    "citizenship": "Turkish Citizenship Interest",
+    "citizenshipOptions": {
+      "yes": "Yes, interested",
+      "no": "No, not interested",
+      "considering": "Considering"
+    },
+    "consent": "I agree to receive market updates and property recommendations",
+    "submit": "Get My Report",
+    "success": "Thank you! Your report will be sent within 24 hours.",
+    "error": "Please fill in all required fields."
+  },
+  "footer": {
+    "brand": {
+      "name": "Off-Market Listing Turkey",
+      "sub": "Private Real Estate",
+      "tagline": "Your Private Gateway to Turkey's Hidden Real Estate Gems."
+    },
+    "markets": "Markets",
+    "services": "Services",
+    "company": "Company",
+    "privateListings": "Private Listings",
+    "citizenshipGuide": "Citizenship Guide",
+    "conciergeService": "Concierge Service",
+    "dueDiligence": "Due Diligence",
+    "partnerReferrals": "Partner Referrals",
+    "aboutUs": "About Us",
+    "marketInsights": "Market Insights",
+    "privacyPolicy": "Privacy Policy",
+    "kvkkNotice": "KVKK Notice",
+    "contact": "Contact",
+    "legal": "© 2026 Off-Market Listing Turkey. All rights reserved. This website does not constitute financial or investment advice. All market data is sourced from publicly available reports and should not be relied upon as a guarantee of future performance. Regulated under applicable Turkish real estate law.",
+    "madeBy": "Made by ALFINIT"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "russian": "Русский",
+    "german": "Deutsch",
+    "persian": "فارسی"
+  }
+}

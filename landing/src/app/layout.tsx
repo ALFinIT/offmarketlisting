@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
-import MarketsProvider from "./providers/MarketsProvider";
 
 const title =
   "Off-Market Listing Turkey | Exclusive Istanbul & Bodrum Properties";
@@ -8,6 +8,7 @@ const description =
   "Private, off-market real estate in Istanbul, Bodrum & Antalya. Concierge service, verified listings, full due diligence. For serious buyers only.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://offmarketturkey.com'),
   title,
   description,
   keywords: [
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', type: 'image/png' },
     ],
     shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    apple: '/favicon.svg'
   },
   openGraph: {
     title,
@@ -50,9 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
-        <MarketsProvider>{children}</MarketsProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

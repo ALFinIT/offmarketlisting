@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "markets": "Pazarlar",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "cta": "İlanları İste"
+  },
+  "hero": {
+    "title": "Off-Market Listing Turkey",
+    "subtitle": "İstanbul, Bodrum & Antalya'da özel, off-market gayrimenkul",
+    "description": "Concierge servisi, doğrulanmış ilanlar, tam due diligence. Sadece ciddi alıcılar için.",
+    "cta": "Pazar Raporu Alın",
+    "learnMore": "Daha Fazla Bilgi"
+  },
+  "stats": {
+    "growth": "Nominal fiyat artışı Yıllık (2024)",
+    "yield": "Brüt kira getirisi, İstanbul prime",
+    "transactions": "Yabancı alıcı işlemlerinde artış, 2024-2025",
+    "citizenship": "Vatandaşlık için minimum mülk değeri"
+  },
+  "valueProps": {
+    "curated": {
+      "title": "Küratörlüğümüz",
+      "body": "Her ilan kişisel olarak incelenir. Bosphorus yalıları, Bodrum deniz kenarı villaları ve Ege kıyı mülklerinden oluşan küçük, seçici portföyümüzü taşırız - hiçbir kamu kanalında mevcut değildir."
+    },
+    "verified": {
+      "title": "Doğrulanmış Due Diligence",
+      "body": "Tapu durumu, DASK sigortası, imar uygunluğu, oturma izinleri ve ipotek yükleri, mülk size sunulmadan önce incelenir. Taahhütten sonra sürpriz yok."
+    },
+    "concierge": {
+      "title": "Concierge Servisi",
+      "body": "Özel havaalanı transferleri, şoförlü mülk turları, vatandaşlık avukatlarına tanıştırmalar ve satın alma sonrası destek. İlk sorudan tamamlamaya kadar sizin iletişim noktanız olarak kalırız."
+    }
+  },
+  "steps": {
+    "submit": {
+      "title": "Kriterlerinizi Gönderin",
+      "body": "Hedef şehrinizi, bütçe aralığınızı, mülk türünü ve Türk vatandaşlığı yatırımını düşünüp düşünmediğinizi paylaşın. Tüm soruları kesinlikle gizli tutarız.",
+      "tag": "2 dakikalık form"
+    },
+    "match": {
+      "title": "İlanları Eşleştiririz",
+      "body": "48 saat içinde, bir danışman off-market portföyümüzden küratörlüğümüz kısa listesini sunar. Mülkler tam olarak açıklanır; adresler NDA imzalanana kadar saklanır.",
+      "tag": "48 saat içinde"
+    },
+    "guided": {
+      "title": "Rehberli İşlem",
+      "body": "Görüntüleme, due diligence, yasal inceleme ve müzakereyi koordine ederiz. Ücretimiz satıcı tarafından ödenir. Danışmanlık servisi için hiçbir şey ödemezsiniz.",
+      "tag": "Tam concierge"
+    }
+  },
+  "marketData": {
+    "transactions": "Konut işlemleri H1 2025 (Türkiye genel)",
+    "rise": "Yabancı alıcı işlemlerinde artış, 2024-2025",
+    "citizenship": "Vatandaşlık için minimum mülk değeri",
+    "rental": "Brüt kira getirisi, İstanbul prime (uzun dönem)"
+  },
+  "assurances": {
+    "noPublic": "Kamu ilanları yok.",
+    "feeFree": "Ücretsiz danışmanlık.",
+    "response": "24 saat içinde yanıt."
+  },
+  "form": {
+    "title": "Ücretsiz Off-Market Raporunuzu Alın",
+    "description": "Kriterlerinize uygun küratörlüğümüz ilanları, pazar içgörüleri ve vatandaşlık rehberliği alın.",
+    "name": "Ad Soyad",
+    "email": "E-posta Adresi",
+    "budget": "Bütçe Aralığı",
+    "budgetOptions": {
+      "under1m": "1M$'ın altında",
+      "1mTo5m": "1M$ - 5M$",
+      "5mTo10m": "5M$ - 10M$",
+      "over10m": "10M$'ın üzerinde"
+    },
+    "city": "Hedef Şehir",
+    "cityOptions": {
+      "istanbul": "İstanbul",
+      "bodrum": "Bodrum",
+      "antalya": "Antalya",
+      "alacati": "Alaçatı",
+      "any": "Herhangi Bir Şehir"
+    },
+    "citizenship": "Türk Vatandaşlığı İlgi",
+    "citizenshipOptions": {
+      "yes": "Evet, ilgileniyorum",
+      "no": "Hayır, ilgilenmiyorum",
+      "considering": "Düşünüyorum"
+    },
+    "consent": "Pazar güncellemeleri ve mülk önerileri almak istiyorum",
+    "submit": "Raporumu Al",
+    "success": "Teşekkürler! Raporunuz 24 saat içinde gönderilecektir.",
+    "error": "Lütfen tüm gerekli alanları doldurun."
+  },
+  "footer": {
+    "brand": {
+      "name": "Off-Market Listing Turkey",
+      "sub": "Özel Gayrimenkul",
+      "tagline": "Türkiye'nin Gizli Gayrimenkul Hazinelerine Özel Geçidiniz."
+    },
+    "markets": "Pazarlar",
+    "services": "Hizmetler",
+    "company": "Şirket",
+    "privateListings": "Özel İlanlar",
+    "citizenshipGuide": "Vatandaşlık Rehberi",
+    "conciergeService": "Concierge Servisi",
+    "dueDiligence": "Due Diligence",
+    "partnerReferrals": "Ortak Referansları",
+    "aboutUs": "Hakkımızda",
+    "marketInsights": "Pazar İçgörüleri",
+    "privacyPolicy": "Gizlilik Politikası",
+    "kvkkNotice": "KVKK Bildirimi",
+    "contact": "İletişim",
+    "legal": "© 2026 Off-Market Listing Turkey. Tüm hakları saklıdır. Bu web sitesi finansal veya yatırım tavsiyesi teşkil etmez. Tüm pazar verileri kamuya açık raporlardan kaynaklanır ve gelecekteki performans garantisi olarak kullanılmamalıdır. Geçerli Türk gayrimenkul yasalarına göre düzenlenir.",
+    "madeBy": "ALFINIT tarafından yapıldı"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "turkish": "Türkçe",
+    "arabic": "العربية",
+    "russian": "Русский",
+    "german": "Deutsch",
+    "persian": "فارسی"
+  }
+}
