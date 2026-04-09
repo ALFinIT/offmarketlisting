@@ -34,3 +34,4 @@ LocaleLayout locale=ar valid=true
 LocaleLayout locale=tr valid=true
 LocaleLayout locale=en valid=true
 LocaleLayout locale=tr valid=true
+LocaleLayout locale=en valid=true

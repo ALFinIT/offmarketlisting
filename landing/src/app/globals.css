@@ -99,7 +99,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4rem;
+  padding: 0 2rem;
   height: 72px;
   background: rgba(15, 30, 48, 0.92);
   backdrop-filter: blur(12px);
