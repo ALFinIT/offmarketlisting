@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useMarkets } from "../providers/MarketsProvider";
 import LanguageSwitcher from "../components/LanguageSwitcher";
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 type Stat = { number: string; label: string };
 type ValueProp = { num: string; title: string; body: string; icon: "eye" | "shield" | "user" };
@@ -109,6 +109,7 @@ function Icon({ name }: { name: ValueProp["icon"] }) {
 export default function Home() {
   const { markets } = useMarkets();
   const t = useTranslations();
+  const locale = useLocale();
   const stats = getStats(t);
   const valueProps = getValueProps(t);
   const steps = getSteps(t);
@@ -353,7 +354,7 @@ export default function Home() {
           <div className="city-grid">
             {markets.map((market, idx) => (
               <Link
-                href={`/markets/${market.slug}`}
+                href={`/${locale}/market/${market.slug}`}
                 key={market.slug}
                 className={`city-card reveal ${idx === 1 ? "reveal-delay-1" : idx === 2 ? "reveal-delay-2" : idx === 3 ? "reveal-delay-3" : ""}`}
               >

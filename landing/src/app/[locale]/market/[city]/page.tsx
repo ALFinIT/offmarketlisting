@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { useMarkets } from "../../providers/MarketsProvider";
-import type { Listing } from "../../lib/marketsData";
+import { useLocale } from 'next-intl';
+import { useMarkets } from "../../../providers/MarketsProvider";
+import type { Listing } from "../../../lib/marketsData";
 
 const DEFAULT_IMAGE = "/markets/istanbul/galata-ferry.jpg";
 
 function ListingCard({ listing }: { listing: Listing }) {
+  const locale = useLocale();
   const slides = useMemo(() => (listing.images && listing.images.length ? listing.images : [DEFAULT_IMAGE]), [listing.images]);
   const [index, setIndex] = useState(0);
   const current = slides[index % slides.length];
@@ -21,10 +23,10 @@ function ListingCard({ listing }: { listing: Listing }) {
       style={{
         background: "var(--white)",
         border: "1px solid var(--border)",
-        padding: "1.8rem",
+        padding: "2rem",
         display: "flex",
         flexDirection: "column",
-        gap: "0.9rem",
+        gap: "1.2rem",
         boxShadow: "0 16px 35px rgba(26, 46, 74, 0.08)",
         borderRadius: "12px",
       }}
@@ -33,7 +35,7 @@ function ListingCard({ listing }: { listing: Listing }) {
         style={{
           position: "relative",
           width: "100%",
-          height: "260px",
+          height: "420px",
           overflow: "hidden",
           borderRadius: "10px",
           border: "1px solid var(--border)",
@@ -116,11 +118,14 @@ function ListingCard({ listing }: { listing: Listing }) {
         )}
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "0.5rem" }}>
-        <h3 style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.3rem", fontWeight: 500, color: "var(--navy)", margin: 0 }}>
-          {listing.title}
+        <h3 style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.6rem", fontWeight: 500, color: "var(--navy)", margin: 0 }}>
+          {listing.title[locale] || listing.title.en}
         </h3>
-        <span style={{ color: "var(--gold)", fontSize: "0.85rem", fontWeight: 600 }}>{listing.price}</span>
+        <span style={{ color: "var(--gold)", fontSize: "1.1rem", fontWeight: 700 }}>{listing.price}</span>
       </div>
+      <p style={{ color: "var(--muted)", fontSize: "0.9rem", margin: "0.2rem 0" }}>
+        {listing.description[locale] || listing.description.en}
+      </p>
       <div style={{ color: "var(--muted)", fontSize: "0.9rem" }}>{listing.location}</div>
       <div style={{ color: "var(--navy)", fontWeight: 500, fontSize: "0.92rem" }}>{listing.size}</div>
       <ul style={{ paddingLeft: "1.1rem", margin: "0.4rem 0 0", color: "var(--muted)", lineHeight: 1.6, fontSize: "0.9rem" }}>
@@ -147,7 +152,8 @@ function ListingCard({ listing }: { listing: Listing }) {
 
 export default function MarketPage() {
   const params = useParams<{ city: string }>();
-  const citySlug = typeof params?.city === "string" ? params.city.toLowerCase() : "";
+  const locale = useLocale();
+  const citySlug = typeof params?.city === "string" ? params.city.toLowerCase() : ""; 
   const { markets, ready } = useMarkets();
   const market = markets.find((item) => item.slug === citySlug);
   const [visible, setVisible] = useState(4);
@@ -161,7 +167,7 @@ export default function MarketPage() {
   return (
     <main style={{ padding: "6rem 4rem 4rem", background: "var(--cream)" }}>
       <div style={{ maxWidth: "860px", marginBottom: "2.5rem" }}>
-        <Link href="/#cities" style={{ color: "var(--gold)", letterSpacing: "0.24em", textTransform: "uppercase", fontSize: "0.62rem", fontWeight: 600 }}>
+        <Link href={`/${locale}/#cities`} style={{ color: "var(--gold)", letterSpacing: "0.24em", textTransform: "uppercase", fontSize: "0.62rem", fontWeight: 600 }}>
           Back to Markets
         </Link>
         <h1 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "2.6rem", color: "var(--navy)", margin: "0.6rem 0" }}>

@@ -10,7 +10,18 @@ const PLACEHOLDER_IMAGE = "/markets/istanbul/galata-ferry.jpg";
 
 type FormState = {
   marketSlug: string;
-  title: string;
+  title_en: string;
+  title_tr: string;
+  title_ar: string;
+  title_ru: string;
+  title_de: string;
+  title_fa: string;
+  description_en: string;
+  description_tr: string;
+  description_ar: string;
+  description_ru: string;
+  description_de: string;
+  description_fa: string;
   location: string;
   price: string;
   size: string;
@@ -21,7 +32,18 @@ type FormState = {
 
 const emptyForm = (defaultMarket: string): FormState => ({
   marketSlug: defaultMarket,
-  title: "",
+  title_en: "",
+  title_tr: "",
+  title_ar: "",
+  title_ru: "",
+  title_de: "",
+  title_fa: "",
+  description_en: "",
+  description_tr: "",
+  description_ar: "",
+  description_ru: "",
+  description_de: "",
+  description_fa: "",
   location: "",
   price: "",
   size: "",
@@ -118,13 +140,29 @@ export default function AdminPage() {
       .filter(Boolean);
 
     const payload: Omit<Listing, "id"> = {
-      title: form.title || "Untitled listing",
+      title: {
+        en: form.title_en || "Untitled listing",
+        tr: form.title_tr || form.title_en || "Untitled listing",
+        ar: form.title_ar || form.title_en || "Untitled listing",
+        ru: form.title_ru || form.title_en || "Untitled listing",
+        de: form.title_de || form.title_en || "Untitled listing",
+        fa: form.title_fa || form.title_en || "Untitled listing",
+      },
+      description: {
+        en: form.description_en || "",
+        tr: form.description_tr || form.description_en || "",
+        ar: form.description_ar || form.description_en || "",
+        ru: form.description_ru || form.description_en || "",
+        de: form.description_de || form.description_en || "",
+        fa: form.description_fa || form.description_en || "",
+      },
       location: form.location || "Location tbc",
       price: form.price || "Price on request",
       size: form.size || "",
       highlights: highlights.length ? highlights : ["Detail pending"],
       status: form.status || "Available",
       images: trimmedImages,
+      market: form.marketSlug,
     };
 
     if (editing.id && editing.market) {
@@ -143,7 +181,18 @@ export default function AdminPage() {
     setEditing({ id: listing.id, market: marketSlug });
     setForm({
       marketSlug,
-      title: listing.title,
+      title_en: listing.title.en || "",
+      title_tr: listing.title.tr || "",
+      title_ar: listing.title.ar || "",
+      title_ru: listing.title.ru || "",
+      title_de: listing.title.de || "",
+      title_fa: listing.title.fa || "",
+      description_en: listing.description.en || "",
+      description_tr: listing.description.tr || "",
+      description_ar: listing.description.ar || "",
+      description_ru: listing.description.ru || "",
+      description_de: listing.description.de || "",
+      description_fa: listing.description.fa || "",
       location: listing.location,
       price: listing.price,
       size: listing.size,
@@ -299,12 +348,111 @@ export default function AdminPage() {
               </select>
             </label>
             <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
-              Title
+              Title (English)
               <input
-                value={form.title}
-                onChange={(e) => setForm({ ...form, title: e.target.value })}
+                value={form.title_en}
+                onChange={(e) => setForm({ ...form, title_en: e.target.value })}
                 style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
                 placeholder="Bosphorus Waterfront Yalı"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Title (Turkish)
+              <input
+                value={form.title_tr}
+                onChange={(e) => setForm({ ...form, title_tr: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                placeholder="Boğaziçi Sahil Yalı"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Title (Arabic)
+              <input
+                value={form.title_ar}
+                onChange={(e) => setForm({ ...form, title_ar: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                placeholder="يالي شاطئ البوسفور"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Title (Russian)
+              <input
+                value={form.title_ru}
+                onChange={(e) => setForm({ ...form, title_ru: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                placeholder="Ялы на набережной Босфора"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Title (German)
+              <input
+                value={form.title_de}
+                onChange={(e) => setForm({ ...form, title_de: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                placeholder="Bosporus Waterfront Yalı"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Title (Persian)
+              <input
+                value={form.title_fa}
+                onChange={(e) => setForm({ ...form, title_fa: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                placeholder="یالی ساحلی بسفر"
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (English)
+              <textarea
+                value={form.description_en}
+                onChange={(e) => setForm({ ...form, description_en: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="A historic waterfront property..."
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (Turkish)
+              <textarea
+                value={form.description_tr}
+                onChange={(e) => setForm({ ...form, description_tr: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="Özel iskele ve restore edilmiş cepheye sahip tarihi bir sahil mülkü..."
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (Arabic)
+              <textarea
+                value={form.description_ar}
+                onChange={(e) => setForm({ ...form, description_ar: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="عقار تاريخي على الواجهة البحرية مع رصيف خاص وواجهة مستعادة..."
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (Russian)
+              <textarea
+                value={form.description_ru}
+                onChange={(e) => setForm({ ...form, description_ru: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="Историческая недвижимость на набережной с частным причалом и восстановленным фасадом..."
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (German)
+              <textarea
+                value={form.description_de}
+                onChange={(e) => setForm({ ...form, description_de: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="Ein historisches Waterfront-Objekt mit privatem Pier und restaurierter Fassade..."
+              />
+            </label>
+            <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+              Description (Persian)
+              <textarea
+                value={form.description_fa}
+                onChange={(e) => setForm({ ...form, description_fa: e.target.value })}
+                style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", minHeight: "60px" }}
+                placeholder="یک ملک تاریخی ساحلی با اسکله خصوصی و نمای بازسازی شده..."
               />
             </label>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.8rem" }}>
@@ -455,7 +603,7 @@ export default function AdminPage() {
               </div>
               {pill("var(--gold-light)", `${market.listings.length} listings`)}
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "0.9rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "1.2rem" }}>
               {market.listings.map((listing) => (
                 <div
                   key={listing.id}
@@ -470,7 +618,7 @@ export default function AdminPage() {
                 >
                   <div
                     style={{
-                      height: "140px",
+                      height: "280px",
                       background: `url('${listing.images[0] || PLACEHOLDER_IMAGE}') center/cover no-repeat`,
                       position: "relative",
                     }}
@@ -494,10 +642,10 @@ export default function AdminPage() {
                       </span>
                     )}
                   </div>
-                  <div style={{ padding: "0.9rem", display: "grid", gap: "0.35rem", flex: 1 }}>
-                    <div style={{ fontWeight: 700, color: "var(--navy)" }}>{listing.title}</div>
-                    <div style={{ color: "var(--muted)", fontSize: "0.85rem" }}>{listing.location}</div>
-                    <div style={{ color: "var(--navy)", fontSize: "0.9rem" }}>{listing.price}</div>
+                  <div style={{ padding: "1.2rem", display: "grid", gap: "0.5rem", flex: 1 }}>
+                    <div style={{ fontWeight: 700, color: "var(--navy)", fontSize: "1.1rem" }}>{listing.title.en || "Untitled"}</div>
+                    <div style={{ color: "var(--gold)", fontSize: "1rem", fontWeight: 600 }}>{listing.price}</div>
+                    <div style={{ color: "var(--muted)", fontSize: "0.9rem" }}>{listing.location}</div>
                   </div>
                   <div style={{ display: "flex", gap: "0.4rem", padding: "0.9rem" }}>
                     <button

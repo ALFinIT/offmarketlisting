@@ -51,7 +51,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (typeof window !== 'undefined') {
+                window.addEventListener('error', (e) => {
+                  if (e && e.message && typeof e.message === 'string' && e.message.includes('Cannot redefine property: ethereum')) {
+                    e.preventDefault();
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', (e) => {
+                  const msg = (e && e.reason && e.reason.message) || (e && e.reason) || '';
+                  if (typeof msg === 'string' && msg.includes('Cannot redefine property: ethereum')) {
+                    e.preventDefault();
+                  }
+                }, true);
+              }
+            `,
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -15,7 +15,7 @@ type MarketsContextValue = {
 };
 
 const MarketsContext = createContext<MarketsContextValue | null>(null);
-const STORAGE_KEY = "oml:markets:v1";
+const STORAGE_KEY = "oml:markets:v2";
 
 function withId(listing: ListingInput): Listing {
   const id = listing.id ?? (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2));
@@ -27,8 +27,15 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    // Only run on client side
+    if (typeof window === "undefined") return;
+    
+    // Mark ready immediately (don't block render)
+    setReady(true);
+    
+    // Load data in background
     try {
-      const raw = typeof window !== "undefined" ? window.localStorage.getItem(STORAGE_KEY) : null;
+      const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as Market[];
         if (Array.isArray(parsed) && parsed.length) {
@@ -37,15 +44,15 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
       }
     } catch (error) {
       console.warn("Unable to read stored markets", error);
-    } finally {
-      setReady(true);
     }
   }, []);
 
   useEffect(() => {
     if (!ready) return;
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(markets));
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(markets));
+      }
     } catch (error) {
       console.warn("Unable to persist markets", error);
     }
