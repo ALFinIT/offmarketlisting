@@ -7,7 +7,7 @@
     "cta": "Listen anfordern"
   },
   "hero": {
-    "title": "Off-Market Listing Turkey",
+    "title": "Kuratierte Exklusivität",
     "subtitle": "Private, off-market Immobilien in Istanbul, Bodrum & Antalya",
     "description": "Concierge-Service, verifizierte Listings, vollständige Due Diligence. Nur für ernsthafte Käufer.",
     "cta": "Marktbericht erhalten",
@@ -94,7 +94,7 @@
   },
   "footer": {
     "brand": {
-      "name": "Off-Market Listing Turkey",
+      "name": "Kuratierte Exklusivität",
       "sub": "Private Immobilien",
       "tagline": "Ihr privater Zugang zu den verborgenen Immobilien-Schätzen der Türkei."
     },
@@ -121,5 +121,84 @@
     "russian": "Русский",
     "german": "Deutsch",
     "persian": "فارسی"
+  },
+  "sections": {
+    "common": {
+      "scroll": "Startseite",
+      "other": "Über uns",
+      "chatOnWhatsApp": "Kontakt",
+      "invalidEmail": "Bitte füllen Sie alle erforderlichen Felder aus."
+    },
+    "value": {
+      "eyebrow": "Märkte",
+      "titleLine1": "Kuratierte Exklusivität",
+      "titleLine2Prefix": "Keine öffentlichen Listings.",
+      "titleLine2Em": "Märkte",
+      "titleLine2Suffix": "",
+      "description": "Jedes Listing wird persönlich geprüft. Wir führen ein kleines, selektives Portfolio von Immobilien, die in keinem öffentlichen Kanal verfügbar sind - Bosporus-Yalis, Bodrum-Seevillen und ägäische Küstengüter."
+    },
+    "process": {
+      "eyebrow": "Über uns",
+      "titleLine1": "Geführte Transaktion",
+      "titleEm": "Kontakt",
+      "titleSuffix": "Vollständiger Concierge",
+      "description": "Wir koordinieren die Besichtigung, Due Diligence, rechtliche Überprüfung und Verhandlung. Unsere Gebühr wird vom Verkäufer bezahlt. Sie zahlen nichts für den Beratungsservice."
+    },
+    "markets": {
+      "eyebrow": "Märkte",
+      "titleLine1": "Märkte",
+      "titleEm": "Startseite",
+      "titleSuffix": "Märkte",
+      "description": "Erhalten Sie kuratierte Listings, die Ihren Kriterien entsprechen, plus Marktinsights und Staatsbürgerschaftsleitfaden.",
+      "privateListingsOnly": "Listen anfordern",
+      "viewMarket": "Märkte",
+      "allMarkets": "Märkte"
+    },
+    "market": {
+      "eyebrow": "Märkte",
+      "titleLine1": "Marktinsights",
+      "titlePrefix": "Märkte",
+      "titleEm": "Nominaler Preiswachstum Jährlich (2024)",
+      "body1": "Nominaler Preiswachstum Jährlich (2024). Bruttomietrendite, Istanbul Premium.",
+      "body2": "Anstieg bei Transaktionen ausländischer Käufer, 2024-2025. Mindestimmobilienwert für Staatsbürgerschaftsberechtigung. Bruttomietrendite, Istanbul Premium (Langzeitvermietung).",
+      "source": "Wohnungstransaktionen H1 2025 (Türkei landesweit)",
+      "panelNotes": {
+        "transactions": "Anstieg bei Transaktionen ausländischer Käufer, 2024-2025",
+        "rise": "Anstieg bei Transaktionen ausländischer Käufer, 2024-2025",
+        "citizenship": "Mindestimmobilienwert für Staatsbürgerschaftsberechtigung",
+        "rental": "Bruttomietrendite, Istanbul Premium (Langzeitvermietung)"
+      }
+    },
+    "magnet": {
+      "label": "Staatsbürgerschaftsleitfaden",
+      "title": "Erhalten Sie Ihren kostenlosen Off-Market-Bericht",
+      "subtitle": "Erhalten Sie kuratierte Listings, die Ihren Kriterien entsprechen, plus Marktinsights und Staatsbürgerschaftsleitfaden.",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "sent": "Vielen Dank! Ihr Bericht wird innerhalb von 24 Stunden gesendet.",
+      "button": "Meinen Bericht erhalten"
+    },
+    "contact": {
+      "eyebrow": "Kontakt",
+      "titleLine1": "Senden Sie Ihre Kriterien",
+      "titleLine2": "Erhalten Sie kuratierte Listings, die Ihren Kriterien entsprechen, plus Marktinsights und Staatsbürgerschaftsleitfaden.",
+      "titleEm": "Meinen Bericht erhalten",
+      "formTitle": "Listen anfordern",
+      "formSubtitle": "Antwort innerhalb 24 Stunden.",
+      "namePlaceholder": "Vollständiger Name",
+      "emailPlaceholder": "E-Mail-Adresse",
+      "selectBudget": "Budgetbereich",
+      "customBudgetPlaceholder": "Budgetbereich",
+      "selectCity": "Zielstadt",
+      "selectOne": "Türkische Staatsbürgerschaftsinteresse",
+      "privacy": "Datenschutzrichtlinie",
+      "successTitle": "Vielen Dank! Ihr Bericht wird innerhalb von 24 Stunden gesendet.",
+      "requiredError": "Bitte füllen Sie alle erforderlichen Felder aus.",
+      "consentError": "Bitte füllen Sie alle erforderlichen Felder aus.",
+      "assurances": {
+        "noPublicBody": "Keine öffentlichen Listings.",
+        "feeFreeBody": "Kostenlose Beratung.",
+        "responseBody": "Antwort innerhalb 24 Stunden."
+      }
+    }
   }
 }

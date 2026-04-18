@@ -7,7 +7,7 @@
     "cta": "İlanları İste"
   },
   "hero": {
-    "title": "Off-Market Listing Turkey",
+    "title": "Küratörlüğümüz",
     "subtitle": "İstanbul, Bodrum & Antalya'da özel, off-market gayrimenkul",
     "description": "Concierge servisi, doğrulanmış ilanlar, tam due diligence. Sadece ciddi alıcılar için.",
     "cta": "Pazar Raporu Alın",
@@ -94,7 +94,7 @@
   },
   "footer": {
     "brand": {
-      "name": "Off-Market Listing Turkey",
+      "name": "Küratörlüğümüz",
       "sub": "Özel Gayrimenkul",
       "tagline": "Türkiye'nin Gizli Gayrimenkul Hazinelerine Özel Geçidiniz."
     },
@@ -121,5 +121,84 @@
     "russian": "Русский",
     "german": "Deutsch",
     "persian": "فارسی"
+  },
+  "sections": {
+    "common": {
+      "scroll": "Ana Sayfa",
+      "other": "Hakkımızda",
+      "chatOnWhatsApp": "İletişim",
+      "invalidEmail": "Lütfen tüm gerekli alanları doldurun."
+    },
+    "value": {
+      "eyebrow": "Pazarlar",
+      "titleLine1": "Küratörlüğümüz",
+      "titleLine2Prefix": "Kamu ilanları yok.",
+      "titleLine2Em": "Pazarlar",
+      "titleLine2Suffix": "",
+      "description": "Her ilan kişisel olarak incelenir. Bosphorus yalıları, Bodrum deniz kenarı villaları ve Ege kıyı mülklerinden oluşan küçük, seçici portföyümüzü taşırız - hiçbir kamu kanalında mevcut değildir."
+    },
+    "process": {
+      "eyebrow": "Hakkımızda",
+      "titleLine1": "Rehberli İşlem",
+      "titleEm": "İletişim",
+      "titleSuffix": "Tam concierge",
+      "description": "Görüntüleme, due diligence, yasal inceleme ve müzakereyi koordine ederiz. Ücretimiz satıcı tarafından ödenir. Danışmanlık servisi için hiçbir şey ödemezsiniz."
+    },
+    "markets": {
+      "eyebrow": "Pazarlar",
+      "titleLine1": "Pazarlar",
+      "titleEm": "Ana Sayfa",
+      "titleSuffix": "Pazarlar",
+      "description": "Kriterlerinize uygun küratörlüğümüz ilanları, pazar içgörüleri ve vatandaşlık rehberliği alın.",
+      "privateListingsOnly": "İlanları İste",
+      "viewMarket": "Pazarlar",
+      "allMarkets": "Pazarlar"
+    },
+    "market": {
+      "eyebrow": "Pazarlar",
+      "titleLine1": "Pazar İçgörüleri",
+      "titlePrefix": "Pazarlar",
+      "titleEm": "Nominal fiyat artışı Yıllık (2024)",
+      "body1": "Nominal fiyat artışı Yıllık (2024). Brüt kira getirisi, İstanbul prime.",
+      "body2": "Yabancı alıcı işlemlerinde artış, 2024-2025. Vatandaşlık için minimum mülk değeri. Brüt kira getirisi, İstanbul prime (uzun dönem).",
+      "source": "Konut işlemleri H1 2025 (Türkiye genel)",
+      "panelNotes": {
+        "transactions": "Yabancı alıcı işlemlerinde artış, 2024-2025",
+        "rise": "Yabancı alıcı işlemlerinde artış, 2024-2025",
+        "citizenship": "Vatandaşlık için minimum mülk değeri",
+        "rental": "Brüt kira getirisi, İstanbul prime (uzun dönem)"
+      }
+    },
+    "magnet": {
+      "label": "Vatandaşlık Rehberi",
+      "title": "Ücretsiz Off-Market Raporunuzu Alın",
+      "subtitle": "Kriterlerinize uygun küratörlüğümüz ilanları, pazar içgörüleri ve vatandaşlık rehberliği alın.",
+      "emailPlaceholder": "E-posta Adresi",
+      "sent": "Teşekkürler! Raporunuz 24 saat içinde gönderilecektir.",
+      "button": "Raporumu Al"
+    },
+    "contact": {
+      "eyebrow": "İletişim",
+      "titleLine1": "Kriterlerinizi Gönderin",
+      "titleLine2": "Kriterlerinize uygun küratörlüğümüz ilanları, pazar içgörüleri ve vatandaşlık rehberliği alın.",
+      "titleEm": "Raporumu Al",
+      "formTitle": "İlanları İste",
+      "formSubtitle": "24 saat içinde yanıt.",
+      "namePlaceholder": "Ad Soyad",
+      "emailPlaceholder": "E-posta Adresi",
+      "selectBudget": "Bütçe Aralığı",
+      "customBudgetPlaceholder": "Bütçe Aralığı",
+      "selectCity": "Hedef Şehir",
+      "selectOne": "Türk Vatandaşlığı İlgi",
+      "privacy": "Gizlilik Politikası",
+      "successTitle": "Teşekkürler! Raporunuz 24 saat içinde gönderilecektir.",
+      "requiredError": "Lütfen tüm gerekli alanları doldurun.",
+      "consentError": "Lütfen tüm gerekli alanları doldurun.",
+      "assurances": {
+        "noPublicBody": "Kamu ilanları yok.",
+        "feeFreeBody": "Ücretsiz danışmanlık.",
+        "responseBody": "24 saat içinde yanıt."
+      }
+    }
   }
 }

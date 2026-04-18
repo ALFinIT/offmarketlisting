@@ -121,5 +121,84 @@
     "russian": "Русский",
     "german": "Deutsch",
     "persian": "فارسی"
+  },
+  "sections": {
+    "common": {
+      "scroll": "Scroll",
+      "other": "Other",
+      "chatOnWhatsApp": "Chat on WhatsApp",
+      "invalidEmail": "Please enter a valid email address."
+    },
+    "value": {
+      "eyebrow": "Why Off-Market",
+      "titleLine1": "The most desirable properties",
+      "titleLine2Prefix": "never",
+      "titleLine2Em": "reach",
+      "titleLine2Suffix": "the portals.",
+      "description": "Sellers of high-value real estate in Turkey choose discretion. We maintain direct relationships with owners across Istanbul, Bodrum, Antalya, and Alacati."
+    },
+    "process": {
+      "eyebrow": "The Process",
+      "titleLine1": "Designed around",
+      "titleEm": "your",
+      "titleSuffix": "discretion.",
+      "description": "We move at your pace, protect your privacy, and focus only on suitable properties."
+    },
+    "markets": {
+      "eyebrow": "Our Markets",
+      "titleLine1": "Four markets,",
+      "titleEm": "one",
+      "titleSuffix": "platform.",
+      "description": "We maintain active seller relationships in key neighborhoods and coastal areas. Listings are never shared publicly.",
+      "privateListingsOnly": "Private listings only",
+      "viewMarket": "View Market",
+      "allMarkets": "All Markets"
+    },
+    "market": {
+      "eyebrow": "Market Context",
+      "titleLine1": "A market of",
+      "titlePrefix": "genuine",
+      "titleEm": "scale.",
+      "body1": "Turkey's residential market posted strong nominal growth in 2024-2025, but real inflation-adjusted returns were weaker in many segments.",
+      "body2": "Foreign buyer transactions rose, citizenship thresholds stayed at $400K, and some coastal luxury segments faced oversupply into 2025-2026.",
+      "source": "Sources: Turkish Statistical Institute (TUIK), GYODER, Central Bank of Turkey. Data as of H1 2025.",
+      "panelNotes": {
+        "transactions": "+15.6% YoY in nominal terms",
+        "rise": "Russia, Iran, Germany lead",
+        "citizenship": "Turkish CBI programme, current threshold",
+        "rental": "Short-let yields higher, with regulatory risk"
+      }
+    },
+    "magnet": {
+      "label": "Free Download",
+      "title": "Turkey Real Estate Due Diligence Checklist",
+      "subtitle": "12-point verification guide for foreign buyers - tapu, DASK, zoning, permits, and more. PDF delivered instantly.",
+      "emailPlaceholder": "Your email address",
+      "sent": "Sent! Check your inbox.",
+      "button": "Download Free PDF"
+    },
+    "contact": {
+      "eyebrow": "Private Enquiry",
+      "titleLine1": "Tell us what",
+      "titleLine2": "you're looking for.",
+      "titleEm": "We'll find it.",
+      "formTitle": "Request Private Listings",
+      "formSubtitle": "We typically respond within one business day with a personalised shortlist.",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "your@email.com",
+      "selectBudget": "Select budget",
+      "customBudgetPlaceholder": "Enter your budget range",
+      "selectCity": "Select city",
+      "selectOne": "Select one",
+      "privacy": "Secure: KVKK & GDPR compliant | Data stored securely | Never sold to third parties",
+      "successTitle": "Enquiry Received",
+      "requiredError": "Please complete all required fields before submitting.",
+      "consentError": "Please confirm your consent to proceed.",
+      "assurances": {
+        "noPublicBody": "Every property we present has been kept off the market at the seller's request.",
+        "feeFreeBody": "Our commission is paid by the seller. There is no charge to buyers for enquiries, viewings, or advisory services.",
+        "responseBody": "For urgent enquiries, use WhatsApp."
+      }
+    }
   }
 }
