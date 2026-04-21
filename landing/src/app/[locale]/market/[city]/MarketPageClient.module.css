@@ -1,4 +1,5 @@
 ﻿.mainWrap {
+  font-family: var(--body-font);
   background: var(--cream);
   min-height: 100vh;
   color: var(--text);
@@ -34,7 +35,7 @@
 }
 
 .navLogoTop {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-weight: 400;
   font-size: 1.1rem;
   color: var(--white);
@@ -119,7 +120,7 @@
 }
 
 .bandTitle {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-weight: 300;
   font-size: clamp(2rem, 3.5vw, 3rem);
   color: var(--white);
@@ -149,7 +150,7 @@
 }
 
 .bandNum {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1.7rem;
   color: var(--gold-light);
 }
@@ -279,7 +280,7 @@
   z-index: 2;
   background: var(--navy-deep);
   color: var(--gold-light);
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1.1rem;
   padding: 0.3rem 0.8rem;
 }
@@ -298,7 +299,7 @@
 
 .cardTitle {
   margin: 0 0 0.8rem;
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1.2rem;
   color: var(--navy-deep);
 }
@@ -321,7 +322,7 @@
 }
 
 .specVal {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1rem;
   color: var(--navy);
 }
@@ -398,7 +399,7 @@
 }
 
 .detailLogo {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   letter-spacing: 0.2em;
 }
 
@@ -510,7 +511,7 @@
 }
 
 .dpTitle {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: clamp(1.8rem, 2.8vw, 2.7rem);
   font-weight: 300;
   color: var(--navy-deep);
@@ -540,7 +541,7 @@
 }
 
 .dpSpecVal {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1.35rem;
   color: var(--navy-deep);
 }
@@ -553,7 +554,7 @@
 }
 
 .sectionTitle {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   color: var(--navy-deep);
   font-size: 1.24rem;
   margin: 0 0 0.8rem;
@@ -609,7 +610,7 @@
 }
 
 .marketNum {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 1.25rem;
   color: var(--gold-light);
 }
@@ -640,7 +641,7 @@
 }
 
 .priceValue {
-  font-family: var(--font-cormorant);
+  font-family: var(--display-font);
   font-size: 2rem;
   color: var(--navy-deep);
 }
@@ -811,4 +812,7 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
 
