@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { initialMarkets, type Listing, type Market } from "../lib/marketsData";
 
 type ListingInput = Omit<Listing, "id"> & { id?: string };
@@ -15,7 +15,7 @@ type MarketsContextValue = {
 };
 
 const MarketsContext = createContext<MarketsContextValue | null>(null);
-const STORAGE_KEY = "oml:markets:v2";
+const STORAGE_KEY = "oml:markets:v3";
 
 function withId(listing: ListingInput): Listing {
   const id = listing.id ?? (typeof crypto !== "undefined" && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2));
@@ -24,15 +24,13 @@ function withId(listing: ListingInput): Listing {
 
 export function MarketsProvider({ children }: { children: ReactNode }) {
   const [markets, setMarkets] = useState<Market[]>(initialMarkets);
-  const [ready, setReady] = useState(false);
+  const ready = true;
+  const hydratedRef = useRef(false);
 
   useEffect(() => {
     // Only run on client side
     if (typeof window === "undefined") return;
-    
-    // Mark ready immediately (don't block render)
-    setReady(true);
-    
+
     // Load data in background
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -44,11 +42,13 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
       }
     } catch (error) {
       console.warn("Unable to read stored markets", error);
+    } finally {
+      hydratedRef.current = true;
     }
   }, []);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!hydratedRef.current) return;
     try {
       if (typeof window !== "undefined") {
         window.localStorage.setItem(STORAGE_KEY, JSON.stringify(markets));
@@ -56,7 +56,7 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.warn("Unable to persist markets", error);
     }
-  }, [markets, ready]);
+  }, [markets]);
 
   const addListing = (marketSlug: string, listing: ListingInput) => {
     setMarkets((prev) =>
@@ -93,9 +93,9 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
     );
   };
 
-  const setStatus = (marketSlug: string, listingId: string, status: string) => {
+  const setStatus = useCallback((marketSlug: string, listingId: string, status: string) => {
     updateListing(marketSlug, listingId, { status });
-  };
+  }, [updateListing]);
 
   const value = useMemo(
     () => ({
@@ -106,7 +106,7 @@ export function MarketsProvider({ children }: { children: ReactNode }) {
       deleteListing,
       setStatus,
     }),
-    [markets, ready]
+    [markets, ready, addListing, updateListing, deleteListing, setStatus]
   );
 
   return <MarketsContext.Provider value={value}>{children}</MarketsContext.Provider>;

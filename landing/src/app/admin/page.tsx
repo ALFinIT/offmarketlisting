@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 import { useMarkets } from "../providers/MarketsProvider";
 import type { Listing } from "../lib/marketsData";
 
@@ -22,12 +23,13 @@ type FormState = {
   description_ru: string;
   description_de: string;
   description_fa: string;
-  location: string;
   price: string;
+  budget: string;
   size: string;
   highlights: string;
   status: string;
   images: string;
+  videos: string;
 };
 
 const emptyForm = (defaultMarket: string): FormState => ({
@@ -44,12 +46,13 @@ const emptyForm = (defaultMarket: string): FormState => ({
   description_ru: "",
   description_de: "",
   description_fa: "",
-  location: "",
   price: "",
+  budget: "",
   size: "",
   highlights: "",
   status: "Available",
   images: "",
+  videos: "",
 });
 
 function pill(color: string, label: string) {
@@ -80,14 +83,6 @@ export default function AdminPage() {
   const [editing, setEditing] = useState<{ id: string | null; market: string | null }>({ id: null, market: null });
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
-
-  useEffect(() => {
-    if (ready && markets.length && !form.marketSlug) {
-      setForm(emptyForm(markets[0].slug));
-    }
-  }, [ready, markets, form.marketSlug]);
-
-  const activeMarket = markets.find((m) => m.slug === form.marketSlug) || markets[0];
 
   const marketStats = useMemo(
     () =>
@@ -124,6 +119,10 @@ export default function AdminPage() {
       .split(/[,\\n]/)
       .map((s) => s.trim())
       .filter(Boolean);
+    const trimmedVideos = form.videos
+      .split(/[,\\n]/)
+      .map((s) => s.trim())
+      .filter(Boolean);
 
     if (!trimmedImages.length) {
       setError("Add at least one image path stored in /public (e.g. /markets/istanbul/galata-ferry.jpg).");
@@ -131,6 +130,10 @@ export default function AdminPage() {
     }
     if (trimmedImages.some((src) => !src.startsWith("/"))) {
       setError("Use local image paths that start with '/'. Remote URLs are blocked for listings.");
+      return;
+    }
+    if (trimmedVideos.some((src) => !src.startsWith("/"))) {
+      setError("Use local video paths that start with '/'. Remote URLs are blocked for listings.");
       return;
     }
 
@@ -156,12 +159,13 @@ export default function AdminPage() {
         de: form.description_de || form.description_en || "",
         fa: form.description_fa || form.description_en || "",
       },
-      location: form.location || "Location tbc",
       price: form.price || "Price on request",
+      budget: form.budget || form.price || "Budget on request",
       size: form.size || "",
       highlights: highlights.length ? highlights : ["Detail pending"],
       status: form.status || "Available",
       images: trimmedImages,
+      videos: trimmedVideos,
       market: form.marketSlug,
     };
 
@@ -193,12 +197,13 @@ export default function AdminPage() {
       description_ru: listing.description.ru || "",
       description_de: listing.description.de || "",
       description_fa: listing.description.fa || "",
-      location: listing.location,
       price: listing.price,
+      budget: listing.budget || "",
       size: listing.size,
       highlights: listing.highlights.join(", "),
       status: listing.status || "Available",
       images: listing.images.join(", "),
+      videos: (listing.videos || []).join(", "),
     });
     setInfo("Editing listing. Save to apply changes.");
   };
@@ -303,9 +308,9 @@ export default function AdminPage() {
         </div>
         <div style={{ display: "flex", gap: "0.6rem", alignItems: "center" }}>
           {pill("var(--gold-light)", "Logged in")}
-          <a href="/#cities" style={{ color: "var(--navy)", fontSize: "0.85rem" }}>
+          <Link href="/#cities" style={{ color: "var(--navy)", fontSize: "0.85rem" }}>
             View site
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -457,21 +462,21 @@ export default function AdminPage() {
             </label>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.8rem" }}>
               <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
-                Location
-                <input
-                  value={form.location}
-                  onChange={(e) => setForm({ ...form, location: e.target.value })}
-                  style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
-                  placeholder="Arnavutköy quay"
-                />
-              </label>
-              <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
                 Price
                 <input
                   value={form.price}
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
                   style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
                   placeholder="€6.8M"
+                />
+              </label>
+              <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+                Budget
+                <input
+                  value={form.budget}
+                  onChange={(e) => setForm({ ...form, budget: e.target.value })}
+                  style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)" }}
+                  placeholder="€6.4M - €7.1M"
                 />
               </label>
             </div>
@@ -494,7 +499,7 @@ export default function AdminPage() {
                 placeholder="Private pier, Historic façade restored 2025, Direct sea frontage"
               />
             </label>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.8rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.8rem" }}>
               <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
                 Status
                 <select
@@ -516,6 +521,16 @@ export default function AdminPage() {
                   rows={2}
                   style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", resize: "vertical" }}
                   placeholder="/markets/istanbul/galata-ferry.jpg"
+                />
+              </label>
+              <label style={{ display: "grid", gap: "0.3rem", fontSize: "0.85rem", color: "var(--muted)" }}>
+                Videos (comma / newline, must start with /)
+                <textarea
+                  value={form.videos}
+                  onChange={(e) => setForm({ ...form, videos: e.target.value })}
+                  rows={2}
+                  style={{ padding: "0.75rem", borderRadius: "10px", border: "1px solid var(--border)", resize: "vertical" }}
+                  placeholder="/markets/istanbul/walkthrough.mp4"
                 />
               </label>
             </div>
@@ -642,11 +657,14 @@ export default function AdminPage() {
                       </span>
                     )}
                   </div>
-                  <div style={{ padding: "1.2rem", display: "grid", gap: "0.5rem", flex: 1 }}>
-                    <div style={{ fontWeight: 700, color: "var(--navy)", fontSize: "1.1rem" }}>{listing.title.en || "Untitled"}</div>
-                    <div style={{ color: "var(--gold)", fontSize: "1rem", fontWeight: 600 }}>{listing.price}</div>
-                    <div style={{ color: "var(--muted)", fontSize: "0.9rem" }}>{listing.location}</div>
-                  </div>
+                    <div style={{ padding: "1.2rem", display: "grid", gap: "0.5rem", flex: 1 }}>
+                      <div style={{ fontWeight: 700, color: "var(--navy)", fontSize: "1.1rem" }}>{listing.title.en || "Untitled"}</div>
+                      <div style={{ color: "var(--gold)", fontSize: "1rem", fontWeight: 600 }}>{listing.price}</div>
+                      <div style={{ color: "var(--muted)", fontSize: "0.9rem" }}>Budget: {listing.budget || listing.price}</div>
+                      <div style={{ color: "var(--muted)", fontSize: "0.8rem" }}>
+                        {listing.images.length} images | {(listing.videos || []).length} videos
+                      </div>
+                    </div>
                   <div style={{ display: "flex", gap: "0.4rem", padding: "0.9rem" }}>
                     <button
                       onClick={() => handleEdit(market.slug, listing)}

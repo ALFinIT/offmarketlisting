@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import "./globals.css";
 
 const title =
@@ -51,11 +50,44 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window === 'undefined') return;
+                const swallow = function(message) {
+                  return typeof message === 'string' && message.includes('Cannot redefine property: ethereum');
+                };
+                const previousOnError = window.onerror;
+                window.onerror = function(message, source, lineno, colno, error) {
+                  if (swallow(String(message || (error && error.message) || ''))) return true;
+                  if (typeof previousOnError === 'function') return previousOnError(message, source, lineno, colno, error);
+                  return false;
+                };
+              })();
+            `,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               if (typeof window !== 'undefined') {
+                const originalDefineProperty = Object.defineProperty;
+                Object.defineProperty = function(target, property, descriptor) {
+                  try {
+                    return originalDefineProperty(target, property, descriptor);
+                  } catch (err) {
+                    const prop = String(property || '');
+                    const message = err && err.message ? String(err.message) : '';
+                    if (prop === 'ethereum' && message.includes('Cannot redefine property: ethereum')) {
+                      return target;
+                    }
+                    throw err;
+                  }
+                };
                 window.addEventListener('error', (e) => {
                   if (e && e.message && typeof e.message === 'string' && e.message.includes('Cannot redefine property: ethereum')) {
                     e.preventDefault();

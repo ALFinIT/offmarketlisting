@@ -2,7 +2,6 @@
 
 import { useRouter, usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import Link from 'next/link';
 
 export default function LanguageSwitcher() {
   const locale = useLocale();

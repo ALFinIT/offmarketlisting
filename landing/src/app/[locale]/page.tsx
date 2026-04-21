@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useMarkets } from "../providers/MarketsProvider";
 import LanguageSwitcher from "../components/LanguageSwitcher";
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 type Stat = { number: string; label: string };
 type ValueProp = { num: string; title: string; body: string; icon: "eye" | "shield" | "user" };
@@ -61,24 +61,25 @@ const getSteps = (t: ReturnType<typeof useTranslations>): Step[] => [
 ];
 
 const getMarketPanels = (t: ReturnType<typeof useTranslations>): DataPanel[] => [
-  { number: "1.4M", label: t('marketData.transactions'), note: t('sections.market.panelNotes.transactions') },
-  { number: "+8.7%", label: t('marketData.rise'), note: t('sections.market.panelNotes.rise') },
-  { number: "$400K", label: t('marketData.citizenship'), note: t('sections.market.panelNotes.citizenship') },
-  { number: "4-6%", label: t('marketData.rental'), note: t('sections.market.panelNotes.rental') },
+  { number: "1.4M", label: t('marketData.transactions'), note: "+15.6% YoY in nominal terms" },
+  { number: "+8.7%", label: t('marketData.rise'), note: "Russia, Iran, Germany lead" },
+  { number: "$400K", label: t('marketData.citizenship'), note: "Turkish CBI programme, current threshold" },
+  { number: "4-6%", label: t('marketData.rental'), note: "Short-let yields higher, with regulatory risk" },
 ];
 
 const getAssurances = (t: ReturnType<typeof useTranslations>) => [
   {
     title: t('assurances.noPublic'),
-    body: t('sections.contact.assurances.noPublicBody'),
+    body: "Every property we present has been kept off the market at the seller's request.",
   },
   {
     title: t('assurances.feeFree'),
-    body: t('sections.contact.assurances.feeFreeBody'),
+    body:
+      "Our commission is paid by the seller. There is no charge to buyers for enquiries, viewings, or advisory services.",
   },
   {
     title: t('assurances.response'),
-    body: t('sections.contact.assurances.responseBody'),
+    body: "For urgent enquiries, use WhatsApp.",
   },
 ];
 
@@ -109,7 +110,6 @@ function Icon({ name }: { name: ValueProp["icon"] }) {
 export default function Home() {
   const { markets } = useMarkets();
   const t = useTranslations();
-  const locale = useLocale();
   const stats = getStats(t);
   const valueProps = getValueProps(t);
   const steps = getSteps(t);
@@ -200,7 +200,7 @@ export default function Home() {
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRe.test(magnetEmail.trim())) {
       setMagnetSent(false);
-      setMagnetError(t('sections.common.invalidEmail'));
+      setMagnetError("Please enter a valid email address.");
       return;
     }
     setMagnetError("");
@@ -213,15 +213,15 @@ export default function Home() {
     const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!form.name || !form.email || !form.budget || !form.city || (form.budget === "Other" && !form.customBudget)) {
-      setFormError(t('sections.contact.requiredError'));
+      setFormError("Please complete all required fields before submitting.");
       return;
     }
     if (!emailRe.test(form.email)) {
-      setFormError(t('sections.common.invalidEmail'));
+      setFormError("Please enter a valid email address.");
       return;
     }
     if (!form.consent) {
-      setFormError(t('sections.contact.consentError'));
+      setFormError("Please confirm your consent to proceed.");
       return;
     }
 
@@ -264,7 +264,9 @@ export default function Home() {
           <div className="hero-content">
             <div className="hero-eyebrow">{t('hero.subtitle')}</div>
             <h1 className="hero-title">
-              {t('hero.title')}
+              Turkey&apos;s <em>Hidden</em>
+              <br />
+              Real Estate Market
             </h1>
             <p className="hero-sub">
               {t('hero.description')}
@@ -280,7 +282,7 @@ export default function Home() {
           </div>
           <div className="hero-scroll">
             <div className="scroll-line" />
-            <span>{t('sections.common.scroll')}</span>
+            <span>Scroll</span>
           </div>
         </section>
 
@@ -295,13 +297,17 @@ export default function Home() {
 
         <section className="value-props" id="about">
           <div className="value-header reveal">
-            <div className="section-eyebrow">{t('sections.value.eyebrow')}</div>
+            <div className="section-eyebrow">Why Off-Market</div>
             <h2 className="value-title">
-              {t('sections.value.titleLine1')}
+              The most desirable properties
               <br />
-              {t('sections.value.titleLine2Prefix')} <em>{t('sections.value.titleLine2Em')}</em> {t('sections.value.titleLine2Suffix')}
+              never <em>reach</em> the portals.
             </h2>
-            <p className="value-desc">{t('sections.value.description')}</p>
+            <p className="value-desc">
+              Sellers of high-value real estate in Turkey choose discretion. We maintain direct relationships with owners
+              across Istanbul&apos;s Bosphorus waterfront, Bodrum&apos;s coastal estates, and the Aegean&apos;s emerging
+              coastal towns.
+            </p>
           </div>
           <div className="value-grid">
             {valueProps.map((item, idx) => (
@@ -318,14 +324,17 @@ export default function Home() {
         <section className="how-it-works" id="how">
           <div className="how-header reveal">
             <div className="section-eyebrow" style={{ color: "rgba(184,149,42,0.8)" }}>
-              {t('sections.process.eyebrow')}
+              The Process
             </div>
             <h2 className="how-title">
-              {t('sections.process.titleLine1')}
+              Designed around
               <br />
-              <em>{t('sections.process.titleEm')}</em> {t('sections.process.titleSuffix')}
+              <em>your</em> discretion.
             </h2>
-            <p className="how-sub">{t('sections.process.description')}</p>
+            <p className="how-sub">
+              We have structured the engagement to move at your pace, protect your privacy, and never waste your time on
+              unsuitable properties.
+            </p>
           </div>
           <div className="steps">
             {steps.map((step, idx) => (
@@ -349,12 +358,14 @@ export default function Home() {
                 <em>{t('sections.markets.titleEm')}</em> {t('sections.markets.titleSuffix')}
               </h2>
             </div>
-            <p className="markets-note">{t('sections.markets.description')}</p>
+            <p className="markets-note">
+              {t('sections.markets.description')}
+            </p>
           </div>
           <div className="city-grid">
             {markets.map((market, idx) => (
               <Link
-                href={`/${locale}/market/${market.slug}`}
+                href={`/market/${market.slug}`}
                 key={market.slug}
                 className={`city-card reveal ${idx === 1 ? "reveal-delay-1" : idx === 2 ? "reveal-delay-2" : idx === 3 ? "reveal-delay-3" : ""}`}
               >
@@ -378,17 +389,22 @@ export default function Home() {
         <section className="market-data" id="data">
           <div className="data-text reveal">
             <div className="section-eyebrow" style={{ color: "rgba(184,149,42,0.8)" }}>
-              {t('sections.market.eyebrow')}
+              Market Context
             </div>
             <h2 className="data-title">
-              {t('sections.market.titleLine1')}
+              A market of
               <br />
-              {t('sections.market.titlePrefix')} <em>{t('sections.market.titleEm')}</em>
+              genuine <em>scale.</em>
             </h2>
-            <p className="data-body">{t('sections.market.body1')}</p>
-            <p className="data-body" style={{ marginBottom: 0 }}>{t('sections.market.body2')}</p>
+            <p className="data-body">
+              Turkey&apos;s residential market posted strong nominal growth in 2024â€“2025, but real (inflation-adjusted) returns tell a different story. Nominal price growth: ~31â€“39% YoY (2024). With CPI running at 50â€“60%, real returns have been negative in most segments.
+            </p>
+            <p className="data-body" style={{ marginBottom: 0 }}>
+              Foreign sales: 8.7% rise YoY, driven by Russian, Iranian, and Gulf buyers. Citizenship-by-investment threshold remains $400K equivalent. Coastal and luxury segment: oversupply in Bodrum and parts of Istanbul is suppressing luxury price growth heading into 2025â€“2026.
+            </p>
             <div className="data-source" style={{ marginTop: "1.5rem" }}>
-              {t('sections.market.source')}
+              Sources: TÃœÄ°K (Turkish Statistical Institute), GYODER (Property Development Association), Central Bank of
+              Turkey. Data as of H1 2025.
             </div>
           </div>
           <div className="data-panels reveal reveal-delay-1">
@@ -408,21 +424,24 @@ export default function Home() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                 <path d="M12 10v6m0 0-3-3m3 3 3-3m2 8H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2Z" />
               </svg>
-              {t('sections.magnet.label')}
+              Free Download
             </div>
-            <div className="magnet-title">{t('sections.magnet.title')}</div>
-            <div className="magnet-subtitle">{t('sections.magnet.subtitle')}</div>
+            <div className="magnet-title">Turkey Real Estate Due Diligence Checklist</div>
+            <div className="magnet-subtitle">
+              12-point verification guide for foreign buyers - tapu, DASK, zoning, permits, and more. PDF delivered
+              instantly.
+            </div>
           </div>
           <div className="magnet-form">
             <input
               type="email"
               className="magnet-input"
-              placeholder={t('sections.magnet.emailPlaceholder')}
+              placeholder="Your email address"
               value={magnetEmail}
               onChange={(e) => setMagnetEmail(e.target.value)}
             />
             <button className="btn-magnet" onClick={handleMagnet}>
-              {magnetSent ? t('sections.magnet.sent') : t('sections.magnet.button')}
+              {magnetSent ? "Sent! Check your inbox." : "Download Free PDF"}
             </button>
           </div>
           {magnetError && (
@@ -432,13 +451,13 @@ export default function Home() {
 
         <section className="lead-section" id="contact">
           <div className="form-lhs reveal">
-            <div className="section-eyebrow">{t('sections.contact.eyebrow')}</div>
+            <div className="section-eyebrow">Private Enquiry</div>
             <h2 className="form-title">
-              {t('sections.contact.titleLine1')}
+              Tell us what
               <br />
-              {t('sections.contact.titleLine2')}
+              you&apos;re looking for.
               <br />
-              <em>{t('sections.contact.titleEm')}</em>
+              <em>We&apos;ll find it.</em>
             </h2>
             <p className="form-body">
               {t('form.description')}
@@ -460,15 +479,17 @@ export default function Home() {
           <div className="reveal reveal-delay-1">
             {!submitted ? (
               <form className="enquiry-form" id="enquiryForm" onSubmit={handleSubmit}>
-                <div className="form-title-inner">{t('sections.contact.formTitle')}</div>
-                <div className="form-subtitle-inner">{t('sections.contact.formSubtitle')}</div>
+                <div className="form-title-inner">Request Private Listings</div>
+                <div className="form-subtitle-inner">
+                  We typically respond within one business day with a personalised shortlist.
+                </div>
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="fname">{t('form.name')} *</label>
                     <input
                       id="fname"
                       type="text"
-                      placeholder={t('sections.contact.namePlaceholder')}
+                      placeholder="Your name"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                     />
@@ -478,7 +499,7 @@ export default function Home() {
                     <input
                       id="email"
                       type="email"
-                      placeholder={t('sections.contact.emailPlaceholder')}
+                      placeholder="your@email.com"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                     />
@@ -492,18 +513,18 @@ export default function Home() {
                       value={form.budget}
                       onChange={(e) => setForm({ ...form, budget: e.target.value })}
                     >
-                      <option value="">{t('sections.contact.selectBudget')}</option>
+                      <option value="">Select budget</option>
                       <option value="under1m">{t('form.budgetOptions.under1m')}</option>
                       <option value="1mTo5m">{t('form.budgetOptions.1mTo5m')}</option>
                       <option value="5mTo10m">{t('form.budgetOptions.5mTo10m')}</option>
                       <option value="over10m">{t('form.budgetOptions.over10m')}</option>
-                      <option value="Other">{t('sections.common.other')}</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                   {form.budget === "Other" && (
                     <input
                       type="text"
-                      placeholder={t('sections.contact.customBudgetPlaceholder')}
+                      placeholder="Enter your budget range"
                       value={form.customBudget}
                       onChange={(e) => setForm({ ...form, customBudget: e.target.value })}
                       style={{ marginTop: "0.5rem" }}
@@ -514,7 +535,7 @@ export default function Home() {
                   <label htmlFor="city">{t('form.city')} *</label>
                   <div className="select-wrapper">
                     <select id="city" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })}>
-                      <option value="">{t('sections.contact.selectCity')}</option>
+                      <option value="">Select city</option>
                       <option value="istanbul">{t('form.cityOptions.istanbul')}</option>
                       <option value="bodrum">{t('form.cityOptions.bodrum')}</option>
                       <option value="antalya">{t('form.cityOptions.antalya')}</option>
@@ -527,7 +548,7 @@ export default function Home() {
                   <label htmlFor="cbi">{t('form.citizenship')}</label>
                   <div className="select-wrapper">
                     <select id="cbi" value={form.cbi} onChange={(e) => setForm({ ...form, cbi: e.target.value })}>
-                      <option value="">{t('sections.contact.selectOne')}</option>
+                      <option value="">Select one</option>
                       <option value="yes">{t('form.citizenshipOptions.yes')}</option>
                       <option value="considering">{t('form.citizenshipOptions.considering')}</option>
                       <option value="no">{t('form.citizenshipOptions.no')}</option>
@@ -545,18 +566,18 @@ export default function Home() {
                     {t('form.consent')}
                   </label>
                 </div>
-                {formError && <div className="error-text">{formError}</div>}
+                {formError && <div className="error-text">{t('form.error')}</div>}
                 <button type="submit" className="btn-submit">
                   {t('form.submit')}
                 </button>
                 <div className="form-privacy">
-                  {t('sections.contact.privacy')}
+                  Secure: KVKK & GDPR compliant | Data stored securely | Never sold to third parties
                 </div>
               </form>
             ) : (
               <div className="success-msg visible" id="successMsg">
-                <div className="success-icon">✓</div>
-                <div className="success-title">{t('sections.contact.successTitle')}</div>
+                <div className="success-icon">âœ“</div>
+                <div className="success-title">Enquiry Received</div>
                 <p className="success-body">
                   {t('form.success')}
                 </p>
@@ -581,8 +602,8 @@ export default function Home() {
               <a href="#cities">Istanbul</a>
               <a href="#cities">Bodrum</a>
               <a href="#cities">Antalya</a>
-              <a href="#cities">Alaçatı</a>
-              <a href="#cities">{t('sections.markets.allMarkets')}</a>
+              <a href="#cities">AlaÃ§atÄ±</a>
+              <a href="#cities">All Markets</a>
             </div>
           </div>
           <div>
@@ -622,7 +643,7 @@ export default function Home() {
       </footer>
 
       <div className={`whatsapp-float ${hideWhatsApp ? "whatsapp-hidden" : ""}`} aria-hidden>
-        <div className="whatsapp-tooltip">{t('sections.common.chatOnWhatsApp')}</div>
+        <div className="whatsapp-tooltip">Chat on WhatsApp</div>
         <a
           className="whatsapp-btn"
           href="https://wa.me/902120000000?text=Hello%2C%20I%20am%20interested%20in%20off-market%20properties%20in%20Turkey."
@@ -637,3 +658,4 @@ export default function Home() {
     </>
   );
 }
+
